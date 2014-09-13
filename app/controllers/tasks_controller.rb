@@ -39,6 +39,7 @@ class TasksController < ApplicationController
   	# check the request format
   	if request.format.symbol == :html
   		render "layouts/application"
+    end
   end
 
 end
