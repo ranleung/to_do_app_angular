@@ -1,5 +1,5 @@
 # Define App and dependencies
-TaskApp = angular.module("TaskApp", ["ngRoute", "templates"])
+TaskApp = angular.module("TaskApp", ["ngRoute", "templates","ui.bootstrap"])
 
 # Setup the angular router
 TaskApp.config ["$routeProvider", "$locationProvider", ($routeProvider, $locationProvider) ->
@@ -16,6 +16,24 @@ TaskApp.config ["$routeProvider", "$locationProvider", ($routeProvider, $locatio
 
 # Books Controller
 TaskApp.controller "TasksCtrl", ["$scope", "$http", ($scope, $http) ->
+	$scope.tasks =[]
+
+	# READ
+	$scope.getTasks = ->
+		$http.get("/tasks.json").success (data) ->
+			$scope.tasks = data
+			console.log(data)
+
+	$scope.getTasks()
+
+	# CREATE
+	$scope.addTask = ->
+		$http.post("/tasks.json", $scope.newTask).success (data) ->
+			$scope.newTask = {}
+			console.log(data)
+			$scope.tasks.push(data)
+
+
 
 ]
 

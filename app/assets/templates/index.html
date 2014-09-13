@@ -5,6 +5,7 @@
 		<div class="col-md-6">
 			<div class="jumbotron">
 				<form action="javascript:void(0);" ng-submit="addTask()">
+					<h2 class="text-center">Create a Task</h2>
 					<input type="text" ng-model="newTask.subject" class="form-control text-center" placeholder="Subject" autofocus required>
 					<input type="text" ng-model="newTask.content" class="form-control text-center" placeholder="Content" required>
 					<button class="btn btn-info form-control">Add Task</button>
@@ -13,8 +14,12 @@
 		</div> <!-- left side ends -->
 		
 		<div class="col-md-6">
-			{{1+2}}
-
+			<ul ng-repeat="task in tasks">
+				<div class="jumbotron">					
+					<li>{{task.subject}}</li>
+					<li>{{task.content}}</li>					
+				</div> <!-- jumbotron close -->
+			</ul>
 		</div> <!-- right side ends -->
 
 
