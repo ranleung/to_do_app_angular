@@ -15,17 +15,23 @@
 		
 		<div class="col-md-6">
 			<ul ng-repeat="task in tasks">
-				<div class="jumbotron">					
-					<li>{{task.subject}}</li>
-					<li>{{task.content}}</li>					
-				</div> <!-- jumbotron close -->
-			</ul>
+				<div class="panel-group" id="accordion">
+					<div class="panel panel-default">
+				    <div class="panel-heading" ng-click="panel()">
+				      <h4 class="panel-title">
+				        {{task.subject}}
+				      </h4>
+				    </div>
+					   <div class="panel-body" ng-hide="displayContent">
+					      {{task.content}}
+				    </div>
+				  </div>
+				</div>								
+			</ul>			
 		</div> <!-- right side ends -->
 
 
 	</div> <!-- row ends -->
-
-
 
 
 </div> <!-- container ends -->

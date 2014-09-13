@@ -18,6 +18,7 @@ TaskApp.config([
 TaskApp.controller("TasksCtrl", [
   "$scope", "$http", function($scope, $http) {
     $scope.tasks = [];
+    $scope.displayContent = true;
     $scope.getTasks = function() {
       return $http.get("/tasks.json").success(function(data) {
         $scope.tasks = data;
@@ -25,12 +26,19 @@ TaskApp.controller("TasksCtrl", [
       });
     };
     $scope.getTasks();
-    return $scope.addTask = function() {
+    $scope.addTask = function() {
       return $http.post("/tasks.json", $scope.newTask).success(function(data) {
         $scope.newTask = {};
         console.log(data);
         return $scope.tasks.push(data);
       });
+    };
+    return $scope.panel = function() {
+      if (this.displayContent) {
+        return this.displayContent = false;
+      } else {
+        return this.displayContent = true;
+      }
     };
   }
 ]);

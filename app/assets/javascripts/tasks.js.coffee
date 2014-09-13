@@ -17,6 +17,7 @@ TaskApp.config ["$routeProvider", "$locationProvider", ($routeProvider, $locatio
 # Books Controller
 TaskApp.controller "TasksCtrl", ["$scope", "$http", ($scope, $http) ->
 	$scope.tasks =[]
+	$scope.displayContent = true
 
 	# READ
 	$scope.getTasks = ->
@@ -33,6 +34,11 @@ TaskApp.controller "TasksCtrl", ["$scope", "$http", ($scope, $http) ->
 			console.log(data)
 			$scope.tasks.push(data)
 
+	$scope.panel = ->
+		if this.displayContent
+			this.displayContent = false
+		else
+			this.displayContent = true
 
 
 ]
