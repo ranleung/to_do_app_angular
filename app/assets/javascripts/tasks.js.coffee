@@ -41,6 +41,14 @@ TaskApp.controller "TasksCtrl", ["$scope", "$http", ($scope, $http) ->
 			this.displayContent = true
 
 
+	# DESTROY
+	$scope.deleteTask = (task) ->
+		conf = confirm "You will delete this task.  Are you sure?"
+		if conf
+			$http.delete("/tasks/#{task.id}.json").success (data) ->
+				$scope.tasks.splice($scope.tasks.indexOf(task), 1)
+
+
 ]
 
 # Define Config for CSRF token

@@ -33,11 +33,20 @@ TaskApp.controller("TasksCtrl", [
         return $scope.tasks.push(data);
       });
     };
-    return $scope.panel = function() {
+    $scope.panel = function() {
       if (this.displayContent) {
         return this.displayContent = false;
       } else {
         return this.displayContent = true;
+      }
+    };
+    return $scope.deleteTask = function(task) {
+      var conf;
+      conf = confirm("You will delete this task.  Are you sure?");
+      if (conf) {
+        return $http["delete"]("/tasks/" + task.id + ".json").success(function(data) {
+          return $scope.tasks.splice($scope.tasks.indexOf(task), 1);
+        });
       }
     };
   }
