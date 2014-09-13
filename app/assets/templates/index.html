@@ -24,7 +24,8 @@
 				    </div>
 					   <div class="panel-body" ng-hide="displayContent">
 					      {{task.content}}
-					      <button class="btn-xs btn-danger">Delete</button>
+					     <br><button class="btn-xs btn-danger" ng-click="deleteTask(task)">Delete</button>
+					     <button class="btn-xs btn-primary" ng-click="updateTask(task)">Update</button>
 				    </div>
 				  </div>
 				</div>								

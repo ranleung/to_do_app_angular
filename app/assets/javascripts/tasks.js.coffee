@@ -45,9 +45,14 @@ TaskApp.controller "TasksCtrl", ["$scope", "$http", ($scope, $http) ->
 	$scope.deleteTask = (task) ->
 		conf = confirm "You will delete this task.  Are you sure?"
 		if conf
+			console.log("Deleteing this task id:", task.id)
 			$http.delete("/tasks/#{task.id}.json").success (data) ->
-				$scope.tasks.splice($scope.tasks.indexOf(task), 1)
+				$scope.tasks.splice($scope.tasks.indexOf(task),1)
 
+	# UPDATE
+	$scope.updateTask = (task) ->
+		$http.put("/tasks/#{this.task.id}.json", task).success (data) ->
+			
 
 ]
 

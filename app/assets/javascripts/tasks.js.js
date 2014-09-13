@@ -40,14 +40,18 @@ TaskApp.controller("TasksCtrl", [
         return this.displayContent = true;
       }
     };
-    return $scope.deleteTask = function(task) {
+    $scope.deleteTask = function(task) {
       var conf;
       conf = confirm("You will delete this task.  Are you sure?");
       if (conf) {
+        console.log("Deleteing this task id:", task.id);
         return $http["delete"]("/tasks/" + task.id + ".json").success(function(data) {
           return $scope.tasks.splice($scope.tasks.indexOf(task), 1);
         });
       }
+    };
+    return $scope.updateTask = function(task) {
+      return $http.put("/tasks/" + this.task.id + ".json", task).success(function(data) {});
     };
   }
 ]);
