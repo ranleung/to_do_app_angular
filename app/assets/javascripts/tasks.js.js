@@ -51,6 +51,13 @@ TaskApp.controller("TasksCtrl", [
         });
       }
     };
+    $scope.showUpdateForm = function() {
+      if (this.checked) {
+        return this.checked = false;
+      } else {
+        return this.checked = true;
+      }
+    };
     return $scope.updateTask = function(task) {
       console.log("Updating task:", task);
       this.checked = false;

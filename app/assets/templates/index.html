@@ -1,6 +1,6 @@
 <div class="container">
 
-	<h1 class="text-center">To Do App</h1>
+	<h1 class="text-center">To Do App with Angular!</h1>
 	<div class="row">
 		<div class="col-md-6">
 			<div class="jumbotron">
@@ -25,11 +25,11 @@
 					   <div class="panel-body" ng-hide="displayContent">
 					      {{task.content}}
 					     <br><button class="btn-xs btn-danger" ng-click="deleteTask(task)">Delete</button>
-					     <input type="checkbox" id="editing{{$index}}" ng-model="checked"><label for="editing{{$index}}">Update</label>
+					     <button type="text" class="btn-xs btn-success" ng-click="showUpdateForm()">Update</button>
 					     <form ng-submit="updateTask(task)" ng-show="checked">
 					     	<input type="text" ng-model="task.subject">
 					     	<input type="text" ng-model="task.content">
-								<button>Update</button>
+								<button class="btn-xs btn-success">Save</button>
 					     </form>
 				    </div>
 				  </div>

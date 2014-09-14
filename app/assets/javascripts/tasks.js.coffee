@@ -50,6 +50,14 @@ TaskApp.controller "TasksCtrl", ["$scope", "$http", ($scope, $http) ->
 				$scope.tasks.splice($scope.tasks.indexOf(task),1)
 				console.log("here?")
 
+	# Showing update form
+	$scope.showUpdateForm = ->
+		if this.checked
+			this.checked = false
+		else
+			this.checked = true
+
+
 	# UPDATE
 	$scope.updateTask = (task) ->
 		console.log("Updating task:", task)
