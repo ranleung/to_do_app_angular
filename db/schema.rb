@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20140913173918) do
   create_table "tasks", force: true do |t|
     t.string   "subject"
     t.string   "content"
+    t.boolean  "complete"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
