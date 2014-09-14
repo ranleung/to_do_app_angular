@@ -25,7 +25,12 @@
 					   <div class="panel-body" ng-hide="displayContent">
 					      {{task.content}}
 					     <br><button class="btn-xs btn-danger" ng-click="deleteTask(task)">Delete</button>
-					     <button class="btn-xs btn-primary" ng-click="updateTask(task)">Update</button>
+					     <input type="checkbox" id="editing{{$index}}" ng-model="checked"><label for="editing{{$index}}">Update</label>
+					     <form ng-submit="updateTask(task)" ng-show="checked">
+					     	<input type="text" ng-model="task.subject">
+					     	<input type="text" ng-model="task.content">
+								<button>Update</button>
+					     </form>
 				    </div>
 				  </div>
 				</div>								

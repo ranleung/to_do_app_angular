@@ -48,12 +48,14 @@ TaskApp.controller "TasksCtrl", ["$scope", "$http", ($scope, $http) ->
 			console.log("Deleteing this task id:", task.id)
 			$http.delete("/tasks/#{task.id}.json").success (data) ->
 				$scope.tasks.splice($scope.tasks.indexOf(task),1)
+				console.log("here?")
 
 	# UPDATE
 	$scope.updateTask = (task) ->
+		console.log("Updating task:", task)
+		this.checked = false
 		$http.put("/tasks/#{this.task.id}.json", task).success (data) ->
-			
-
+			console.log(data)
 ]
 
 # Define Config for CSRF token

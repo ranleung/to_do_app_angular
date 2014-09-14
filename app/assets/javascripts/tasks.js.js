@@ -46,12 +46,17 @@ TaskApp.controller("TasksCtrl", [
       if (conf) {
         console.log("Deleteing this task id:", task.id);
         return $http["delete"]("/tasks/" + task.id + ".json").success(function(data) {
-          return $scope.tasks.splice($scope.tasks.indexOf(task), 1);
+          $scope.tasks.splice($scope.tasks.indexOf(task), 1);
+          return console.log("here?");
         });
       }
     };
     return $scope.updateTask = function(task) {
-      return $http.put("/tasks/" + this.task.id + ".json", task).success(function(data) {});
+      console.log("Updating task:", task);
+      this.checked = false;
+      return $http.put("/tasks/" + this.task.id + ".json", task).success(function(data) {
+        return console.log(data);
+      });
     };
   }
 ]);
